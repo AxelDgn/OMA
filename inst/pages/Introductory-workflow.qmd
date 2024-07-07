@@ -3,17 +3,17 @@
 <div id="workflow">
 
 <div id="translate">
-  <a href="Introductory-workflow-french-version.qmd"><img src="images/profile-pics/France_flag.png" alt="French flag" class="profilepic"/> **French** </a>
-  <a href="Introductory-workflow-dutch-version.qmd"><img src="images/profile-pics/Netherland_flag.jpg" alt="Netherland flag" class="profilepic"/> **Dutch** </a>
+  <a href="Introductory-workflow-french-version.qmd"><img src="images/flags/France_flag.png" alt="French flag" class="flag"/> **French** </a>
+  <a href="Introductory-workflow-dutch-version.qmd"><img src="images/flags/Netherland_flag.jpg" alt="Netherland flag" class="flag"/> **Dutch** </a>
 </div>
 
 <img src="images/intro_workflow_logo.svg" alt="logo workflow" id="banner"/>
 
-# Introduction
+## Introduction
 
 Hello and welcome to a complete workflow using the latest R/Bioconductor tools for microbiome data science. In this tutorial we’ll walk you through some basic steps of a composition analysis study using OMA. These will be applicable to almost any of your projects and will help you understand the fundamental concepts that will sky-rocket 🚀 your future microbiome analyses.
 
-# Importing data
+## Importing data
 
 When using microbiome packages, there are many different ways to import your data. Let's first load the required package:
 
@@ -66,7 +66,7 @@ There are of course other ways to import your data using the [**mia package**](h
 
 <hr>
 
-# Storing microbiome data
+## Storing microbiome data
 
 *TreeSummarizedExperiment* or TreeSE object is the type of object used within the [**mia package**](https://microbiome.github.io/mia/) to store your data. It's a versatile and multi-purpose data type that allows for an efficient way to store and access data.
 
@@ -108,7 +108,7 @@ To illustrate the structure of a *TreeSummarizedExperiment*, here's an article o
 
 <hr>
 
-# Wrangling the data
+## Wrangling the data
 
 In some cases, you may need to change your data in order to get your wanted results. In this section we'll go over how to agglomerate data, subset your data and more. A *TreeSummarizedExperiment* allows for some neat data manipulation using [**the dplyr package**](https://dplyr.tidyverse.org/).
 
@@ -139,7 +139,7 @@ datatable(data.frame(rowData(tse.agglomerated)),options = list(pageLength = 5),r
 
 Great! Now, our data is confined to the taxonomic information up to the Phylum level, allowing the analysis to be focused on this specific rank. In the rest of the workflow, we won't be using the agglomerated data but all of the code beneath can be used on this.
 
-# Metrics
+## Metrics
 
 ## Community Diversity
 
@@ -267,8 +267,7 @@ mia provides some dimension reduction techniques, such as dbRDA. Additionally, w
 ```{r}
 #| label: showPCoA
 # Create ggplot object
-p <- plotReducedDim(tse, "MDS_bray") +
-  geom_point(color = "#659b91")
+p <- plotReducedDim(tse, "MDS_bray", colour_by = "cohort")
 
 # Convert to an interactive plot with ggplotly
 ggplotly(p)
@@ -294,7 +293,7 @@ There we have it! Each axis shows the amount of variance or in our case dissimil
 
 <hr>
 
-# Datavisualisation using heatmaps
+## Datavisualisation using heatmaps
 
 Heatmaps are one of the most versatile ways to visualise your data. In this section we'll cover how to create a basic heatmap to visualise the most prevalent features using the [**sechm library**](https://bioconductor.org/packages/release/bioc/html/sechm.html). For a more detailed heatmap, please revert to **this section** [@sec-multi-assay-analyses] of the OMA book.
 
