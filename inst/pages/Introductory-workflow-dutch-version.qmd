@@ -1,5 +1,10 @@
 ## Introductory (Dutch)
 
+```{r setup, echo=FALSE, results="asis"}
+library(rebook)
+chapterPreamble()
+```
+
 <div id="workflow">
 
 <div id="translate">
@@ -17,7 +22,7 @@ Hallo en welkom bij een complete workflow met de nieuwste R/Bioconductor-tools v
 
 Bij het gebruik van microbiome-pakketten zijn er veel verschillende manieren om je data te importeren. Laten we eerst alle paketten laden:
 
-```{r setup}
+```{r}
 #| output: FALSE
 # List of packages that we need
 packages <- c(
@@ -347,3 +352,5 @@ sechm(altExp(tse, "prevalence-subset"), features =
 ```
 
 In de heatmap hierboven valt op dat Parabacteroides relatief vaak voorkomen in sommige monsters terwijl Akkermansia zeer weinig wordt gedetecteerd.
+
+</div>

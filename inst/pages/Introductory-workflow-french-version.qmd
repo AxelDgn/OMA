@@ -1,5 +1,10 @@
 ## Introductory (French)
 
+```{r setup, echo=FALSE, results="asis"}
+library(rebook)
+chapterPreamble()
+```
+
 <div id="workflow">
 
 <div id="translate">
@@ -17,7 +22,7 @@ Bonjour et bienvenue dans un workflow complet utilisant les derniers outils R/Bi
 
 Lors de l'utilisation de packages pour le microbiome, il existe de nombreuses façons différentes d'importer vos données. Commençons par charger les packages requis:
 
-```{r setup}
+```{r}
 #| output: FALSE
 # List of packages that we need
 packages <- c(

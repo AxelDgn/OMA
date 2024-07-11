@@ -1,11 +1,15 @@
 ## Introductory
 
+```{r setup, echo=FALSE, results="asis"}
+library(rebook)
+chapterPreamble()
+```
+
 <div id="workflow">
 
-<div id="translate">
-  <a href="Introductory-workflow-french-version.qmd"><img src="images/flags/France_flag.png" alt="French flag" class="flag"/> **French** </a>
-  <a href="Introductory-workflow-dutch-version.qmd"><img src="images/flags/Netherland_flag.jpg" alt="Netherland flag" class="flag"/> **Dutch** </a>
-</div>
+::: {#translate}
+<a href="Introductory-workflow-french-version.qmd"><img src="images/flags/France_flag.png" alt="French flag" class="flag"/> **French** </a> <a href="Introductory-workflow-dutch-version.qmd"><img src="images/flags/Netherland_flag.jpg" alt="Netherland flag" class="flag"/> **Dutch** </a>
+:::
 
 <img src="images/intro_workflow_logo.svg" alt="logo workflow" id="banner"/>
 
@@ -17,7 +21,7 @@ Hello and welcome to a complete workflow using the latest R/Bioconductor tools f
 
 When using microbiome packages, there are many different ways to import your data. Let's first load the required package:
 
-```{r setup}
+```{r}
 #| output: FALSE
 # List of packages that we need
 packages <- c(
@@ -81,7 +85,6 @@ assay(tse)[1:5,1:10]
 
 Whereas **colData** [@sec-add-or-modify-data] is accessible through:
 
-
 ```{r}
 #| label: showColdata
 # Transform the colData to a dataframe
@@ -91,7 +94,7 @@ tse_df_colData <- as.data.frame(colData(tse))
 datatable(tse_df_colData,options = list(pageLength = 5),rownames = FALSE)
 ```
 
-*rowData** [@sec-rowData] contains data on sample characteristics, particularly taxonomic information.
+\*rowData\*\* [@sec-rowData] contains data on sample characteristics, particularly taxonomic information.
 
 ```{r}
 #| warning: FALSE
@@ -112,7 +115,7 @@ To illustrate the structure of a *TreeSummarizedExperiment*, here's an article o
 
 In some cases, you may need to change your data in order to get your wanted results. In this section we'll go over how to agglomerate data, subset your data and more. A *TreeSummarizedExperiment* allows for some neat data manipulation using [**the dplyr package**](https://dplyr.tidyverse.org/).
 
-## Subsetting
+### Subsetting
 
 In some cases, you may only need to use part of your original *TreeSummarizedExperiment*.
 
@@ -125,7 +128,7 @@ tse_subset_by_sample <- tse[ , tse$cohort =="Cohort_1"]
 
 This will create a *TreeSummarizedExperiment* Object only containing samples of the first cohort.
 
-## Agglomerating data
+### Agglomerating data
 
 To further push your data analysis and focus on its distribution at a specific taxonomic rank, it can be beneficial to agglomerate your data to that particular level. The agglomerateByRank function simplifies this process, enabling more streamlined and effective analyses. Here’s an example:
 
@@ -141,7 +144,7 @@ Great! Now, our data is confined to the taxonomic information up to the Phylum l
 
 ## Metrics
 
-## Community Diversity
+### Community Diversity
 
 Community diversity in microbiology is measured by several indices:
 
@@ -222,7 +225,7 @@ It's very important to make all these comparisons in order to quantify diversity
 
 <hr>
 
-## Community similarity
+### Community similarity
 
 Community similarity refers to the way microorganisms resemble each other in terms of their composition and abundance of different microbial taxa. This can help us understand to what degree different samples resemble each other and finding key information. In microbiome analysis however, it's more common to measure the dissimilarity/Beta diversity between two samples A and B using the Bray-Curtis measure which is defined as follows:
 
@@ -236,13 +239,13 @@ tse <- transformAssay(tse,
                       assay.type = "counts",
                       method = "relabundance")
 ```
+
 This will take the original counts assay and apply the calculate the relative abundances. The result is a matrix with the sample identifiers as rows and the relative abundances for each taxon within those samples as columns. It can be accessed in the assays of the tse:
 
 ```{r}
 #| label: showRelabundance
 assay(tse, "relabundance")[5:10,1:10]
 ```
-
 
 Then we can add the Bray-Curtis dissimilarity :
 
@@ -293,7 +296,7 @@ There we have it! Each axis shows the amount of variance or in our case dissimil
 
 <hr>
 
-## Datavisualisation using heatmaps
+## Data visualisation using heatmaps
 
 Heatmaps are one of the most versatile ways to visualise your data. In this section we'll cover how to create a basic heatmap to visualise the most prevalent features using the [**sechm library**](https://bioconductor.org/packages/release/bioc/html/sechm.html). For a more detailed heatmap, please revert to **this section** [@sec-multi-assay-analyses] of the OMA book.
 
