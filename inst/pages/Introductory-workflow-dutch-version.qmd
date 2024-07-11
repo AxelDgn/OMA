@@ -1,6 +1,9 @@
 ## Introductory (Dutch)
 
-```{r setup, echo=FALSE, results="asis"}
+```{r}
+#| label: setup
+#| echo: FALSE
+#| results: "asis"
 library(rebook)
 chapterPreamble()
 ```
@@ -23,6 +26,7 @@ Hallo en welkom bij een complete workflow met de nieuwste R/Bioconductor-tools v
 Bij het gebruik van microbiome-pakketten zijn er veel verschillende manieren om je data te importeren. Laten we eerst alle paketten laden:
 
 ```{r}
+#| label: install
 #| output: FALSE
 # List of packages that we need
 packages <- c(
@@ -245,7 +249,7 @@ Het is erg belangrijk om al deze vergelijkingen te maken om diversiteit te kwant
 
 <hr>
 
-## Community similarity (Gemeenschapsovereenkomst)
+### Community similarity (Gemeenschapsovereenkomst)
 
 Community similarity of Gemeenschapsovereenkomst verwijst naar de mate waarin micro-organismen op elkaar lijken qua samenstelling en overvloed van verschillende microbiële taxa. Dit kan ons helpen begrijpen in hoeverre verschillende monsters op elkaar lijken en faciliteert het helpen van belangrijke informatie. In microbiële analyse is het echter gebruikelijker om de ongelijkheid (Beta diversiteit) tussen twee monsters A en B te meten met behulp van de Bray-Curtis-formule, die als volgt wordt gedefinieerd:
 

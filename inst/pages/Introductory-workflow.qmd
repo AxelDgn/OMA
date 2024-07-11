@@ -1,6 +1,9 @@
 ## Introductory
 
-```{r setup, echo=FALSE, results="asis"}
+```{r}
+#| label: setup
+#| echo: FALSE
+#| results: "asis"
 library(rebook)
 chapterPreamble()
 ```
@@ -19,9 +22,10 @@ Hello and welcome to a complete workflow using the latest R/Bioconductor tools f
 
 ## Importing data
 
-When using microbiome packages, there are many different ways to import your data. Let's first load the required package:
+When using microbiome packages, there are many different ways to import your data. Let's first load the required packages:
 
 ```{r}
+#| label: install
 #| output: FALSE
 # List of packages that we need
 packages <- c(
@@ -126,7 +130,7 @@ Using the Tengeler2020 dataset, we can focus on a certain cohort for example. Do
 tse_subset_by_sample <- tse[ , tse$cohort =="Cohort_1"]
 ```
 
-This will create a *TreeSummarizedExperiment* Object only containing samples of the first cohort.
+This will create a *TreeSummarizedExperiment* object only containing samples of the first cohort.
 
 ### Agglomerating data
 
@@ -231,7 +235,7 @@ Community similarity refers to the way microorganisms resemble each other in ter
 
 $$
 BC_{ij} = \frac{\sum_{k} |A_{k} - B_{k}|}{\sum_{k} (A_{k} + B_{k})}
-$$ Luckily for us, the [**mia package**](https://microbiome.github.io/mia/) provides an easy way to calculate the relative Abundance to our TreeSE using the `transformAssay` method.
+$$ Luckily for us, the [**mia package**](https://microbiome.github.io/mia/) provides an easy way to calculate the relative abundance for our TreeSE using the `transformAssay` method.
 
 ```{r}
 #| label: calculateRelabundance
@@ -240,7 +244,7 @@ tse <- transformAssay(tse,
                       method = "relabundance")
 ```
 
-This will take the original counts assay and apply the calculate the relative abundances. The result is a matrix with the sample identifiers as rows and the relative abundances for each taxon within those samples as columns. It can be accessed in the assays of the tse:
+This will take the original counts assay and calculate the relative abundances. The result is a matrix with the sample identifiers as rows and the relative abundances for each taxon within those samples as columns. It can be accessed in the assays of the tse:
 
 ```{r}
 #| label: showRelabundance
